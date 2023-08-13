@@ -2,8 +2,19 @@ import Weapon from "./Weapon.js";
 
 export default class Gun extends Weapon {
   constructor(x, y) {
-    super(x, y);
+    super(x, y); // Call the super constructor from Weapon class
+    this.name = "Gun"; // Add a name for the item
     this.bullets = [];
+  }
+
+  draw(ctx) {
+    if (!this.pickedUp) {
+      // Only draw if the gun has not been picked up
+      ctx.fillStyle = "black";
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, 5, 0, 2 * Math.PI); // Draw a circle with a radius of 5
+      ctx.fill();
+    }
   }
 
   shoot(x, y, angle) {
